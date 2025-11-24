@@ -15,3 +15,21 @@ Pass the App Service's managed identity to the GenAI module:
 - In genai.bicep, accept managedIdentityPrincipalId as a parameter
 - Use this principal ID for role assignments to Azure OpenAI and Cognitive Search
 - Do not create a new managed identity in genai.bicep
+
+Use this code in the chat client macthing ManagedIdentityClientId to the ClientID for the managed identity you created for the app service and
+assigned ot the genai services:
+
+ // Use ManagedIdentityCredential with explicit client ID
+            var managedIdentityClientId = _configuration["ManagedIdentityClientId"];
+            Azure.Core.TokenCredential credential;
+            
+            if (!string.IsNullOrEmpty(managedIdentityClientId))
+            {
+                _logger.LogInformation("Using ManagedIdentityCredential with client ID: {ClientId}", managedIdentityClientId);
+                credential = new ManagedIdentityCredential(managedIdentityClientId);
+            }
+            else
+            {
+                _logger.LogInformation("Using DefaultAzureCredential");
+                credential = new DefaultAzureCredential();
+            }
