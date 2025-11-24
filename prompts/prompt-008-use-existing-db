@@ -1,6 +1,6 @@
 use the SQL database you created earlier:
 
-Server=tcp:sql-expense-mgmt-xyz.database.windows.net,1433;Initial Catalog=<ExampleDB>;Encrypt=True;
+Server=tcp:<example>.database.windows.net,1433;Initial Catalog=<ExampleDB>;Encrypt=True;
 TrustServerCertificate=False;Connection Timeout=30;
 
 connect using the managedidentiy you created before using this format:
@@ -10,5 +10,8 @@ string connectionString = "Server=tcp:<server>.database.windows.net;" +
                           "Authentication=Active Directory Managed Identity;" +
                           "User Id=<client-id-of-user-assigned-mi>;";
 
+do not create any other kind of db access like user name password or tokens just managed identity to avoid this potential issue:
 
-  
+"The connection is failing because your code is trying to use access token authentication (setting connection.AccessToken), 
+but you also have Authentication=Active Directory Managed Identity in the connection string - 
+these two approaches conflict with each other."
