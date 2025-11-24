@@ -13,4 +13,6 @@ You need to:
 
 Output the principalId from app-service.bicep
 Pass it to genai.bicep
-Use it in the role assignments
+Use it in the role assignments.
+
+To be clear you must add the managed identity you created before and assign it to any Azure Open AI or Cognitive Search (AI Search) resources you create
