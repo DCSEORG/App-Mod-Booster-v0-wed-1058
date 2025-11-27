@@ -13,7 +13,7 @@ Steps to modernise an app:
 6. Open terminal in VS Code and using the Azure CLI run "az login" to set subscription/context
 7. Run the deploy.sh file (ensuring the settings in the bicep files are what you want - it will have resource group, names, SKUs set)
 
-Note the script current requires python to be installed.
+Note the deployment script current requires python to be installed.
 
 Supporting slides for Microsoft Employees:
 https://microsofteur-my.sharepoint.com/:p:/g/personal/dchisholm_microsoft_com/IQAY41LQ12fjSIfFz3ha4hfFAZc7JQQuWaOrF7ObgxRK6f4?e=p6arJs
